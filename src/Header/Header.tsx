@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from './img/logoTel.png'
+import Logo from '../img/Logo/logoTel.png'
 
 export function Header() {
     return (

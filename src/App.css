@@ -10,14 +10,12 @@
 
 }
 .header {
-    /*grid-area: h;*/
+    grid-area: h;
     background-color: #4d75a3;
-    width: 100%;
 }
 .header img {
     width: 50px;
-    /*margin: 5px 5px 5px;*/
-    /*height: 50px;*/
+    margin: 5px 5px 5px;
 }
 .nav {
     grid-area: n;
