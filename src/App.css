@@ -1,1 +1,28 @@
+.App {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-auto-columns: 2fr 10fr;
+    grid-gap: 3px;
+    grid-template-areas:
+            'h h'
+            'n c';
 
+}
+.header {
+    grid-area: h;
+    background-color: #4d75a3;
+}
+.header img {
+    width: 50px;
+    margin: 5px 5px 5px;
+    /*height: 50px;*/
+}
+.nav {
+    grid-area: n;
+    background-color: #365c88;
+}
+.content {
+    grid-area: c;
+    background-color: #efefef
+
+}
