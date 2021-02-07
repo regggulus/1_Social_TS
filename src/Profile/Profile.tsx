@@ -1,6 +1,7 @@
 import React from "react";
 import Cover from '../img/cover/jellyfish1.jpg';
 import s from './Profile.module.css'
+import {MyPosts} from "./MyPosts/MyPosts";
 
 export function Profile() {
     return (
@@ -11,17 +12,7 @@ export function Profile() {
             <div>
                 ava + description
             </div>
-            <div>
-                My post
-                <div>
-                    New Post
-                </div>
-                <div className={s.post}>
-                    <div className={s.item}>post #1</div>
-                    <div className={s.item}>post #2</div>
-                    <div className={s.item}>post #3</div>
-                </div>
-            </div>
+            <MyPosts/>
         </div>
     )
 }

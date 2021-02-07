@@ -5,3 +5,6 @@
 .item {
     color: white;
 }
+.item .active{
+    color: goldenrod;
+}
