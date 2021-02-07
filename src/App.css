@@ -1,5 +1,4 @@
 .App {
-
     display: grid;
     grid-template-rows: 70px 5fr;
     grid-auto-columns: 3fr 10fr;

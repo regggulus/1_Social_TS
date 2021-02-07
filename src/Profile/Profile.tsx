@@ -1,23 +1,25 @@
 import React from "react";
 import Cover from '../img/cover/jellyfish1.jpg';
-import './Profile.css'
+import s from './Profile.module.css'
 
 export function Profile() {
     return (
-        <div className={'content'}>
+        <div className={s.content}>
             <div>
                 <img src={Cover}/>
             </div>
-            <div> ava + description</div>
+            <div>
+                ava + description
+            </div>
             <div>
                 My post
                 <div>
                     New Post
                 </div>
-                <div>
-                    <div>post #1</div>
-                    <div>post #2</div>
-                    <div>post #3</div>
+                <div className={s.post}>
+                    <div className={s.item}>post #1</div>
+                    <div className={s.item}>post #2</div>
+                    <div className={s.item}>post #3</div>
                 </div>
             </div>
         </div>
