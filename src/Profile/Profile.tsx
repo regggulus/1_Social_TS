@@ -1,5 +1,7 @@
 import React from "react";
 import Cover from '../img/cover/jellyfish1.jpg';
+import './Profile.css'
+
 export function Profile() {
     return (
         <div className={'content'}>
