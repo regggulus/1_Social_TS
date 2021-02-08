@@ -1,10 +1,10 @@
 import React from "react";
-import Avatar from '../../../img/avatar/StickerExample.jpg';
+import Avatar from '../../../../img/avatar/StickerExample.jpg';
 import s from './Post.module.css'
 
 type PostPropsType = {
     message: string
-    likesCount: number
+    likesCount: string
 }
 export function Post(props: PostPropsType) {
     return (
