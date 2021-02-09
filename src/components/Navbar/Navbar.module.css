@@ -1,10 +1,16 @@
 .nav {
     grid-area: n;
     background-color: #365c88;
+    paddind: 20px;
 }
-.item {
+.item a {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-around;*/
     color: white;
+    text-decoration: none;
+    margin: 20px;
 }
-.item .active{
-    color: goldenrod;
+.item a.active{
+    color: #efaf42;
 }
