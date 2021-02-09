@@ -5,19 +5,19 @@ export function Navbar() {
     return (
         <div className={s.nav}>
             <div className={s.item}>
-                <a>Profile</a>
+                <a href={'/profile'}>Profile</a>
             </div>
             <div className={`${s.item} + ${s.active}`}>
-                <a>Messages</a>
+                <a href={'/messages'}>Messages</a>
             </div>
             <div className={s.item}>
-                <a>News</a>
+                <a href={'/news'}>News</a>
             </div>
             <div className={s.item}>
-                <a >Music</a>
+                <a href={'/music'}>Music</a>
             </div>
             <div className={s.item}>
-                <a>Settings</a>
+                <a href={'/settings'}>Settings</a>
             </div>
         </div>
     )
