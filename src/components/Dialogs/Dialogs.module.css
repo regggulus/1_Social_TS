@@ -2,14 +2,18 @@
     display: grid;
     grid-template-columns: 2fr 6fr;
     padding: 10px;
-}
 
-.dialogsItem {
+}
+.dialogs .dialog {
+    padding: 10px;
+}
+.dialog a {
     padding: 10px;
     color: #508aff;
+    text-decoration: none;
 }
-.dialogsItem .active {
-    color: #de2969;
+.dialog a.active {
+    color: red;
 }
 
 .messages {
@@ -17,6 +21,6 @@
 }
 
 .messages .message {
-    /*padding: 10px;*/
+    padding: 10px;
 
 }
