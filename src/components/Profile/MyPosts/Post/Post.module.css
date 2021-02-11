@@ -1,11 +1,11 @@
 .item {
     color: #56b351;
+    padding: 10px;
 }
 
 .item img {
     width: 60px;
     height: 60px;
     border-radius: 30px;
-
 }
 

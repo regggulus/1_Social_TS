@@ -16,4 +16,3 @@ export function Post(props: PostPropsType) {
         </div>
     )
 }
-

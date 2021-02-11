@@ -2,25 +2,5 @@
     display: grid;
     grid-template-columns: 2fr 6fr;
     padding: 10px;
-
-}
-.dialogs .dialog {
-    padding: 10px;
-}
-.dialog a {
-    padding: 10px;
-    color: #508aff;
-    text-decoration: none;
-}
-.dialog a.active {
-    color: red;
-}
-
-.messages {
-    padding: 10px;
-}
-
-.messages .message {
-    padding: 10px;
-
+    color: coral;
 }

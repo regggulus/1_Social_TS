@@ -1,33 +1,27 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
-import s from './Dialogs.module.css'
+import s from './Dialogs.module.css';
+import {DialogsItem} from "./DialogsItem/DialogsItem";
+import { Message } from "./Message/Message";
+
+
 
 export function Dialogs() {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItem}>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/1" activeClassName={s.active}>Mason</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/2" activeClassName={s.active}>Edgar</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/3" activeClassName={s.active}>Felix</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/4" activeClassName={s.active}>Jack</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to="/dialogs/5" activeClassName={s.active}>Calvin</NavLink>
-                </div>
+                <DialogsItem name={"Mason"} id={1}/>
+                <DialogsItem name={"Edgar"} id={2}/>
+                <DialogsItem name={"Felix"} id={3}/>
+                <DialogsItem name={"Jack"} id={4}/>
+                <DialogsItem name={"Calvin"} id={5}/>
             </div>
+
             <div className={s.messages}>
-                <div className={s.message}>Of course!</div>
-                <div className={s.message}>A lot of my staff..</div>
-                <div className={s.message}>Oke, we`ll see</div>
-                <div className={s.message}>Dont`s know</div>
-                <div className={s.message}>What`s up?</div>
+                <Message message={"A lot of my staff.."}/>
+                <Message message={"Oke, we`ll see"}/>
+                <Message message={"Dont`s know"}/>
+                <Message message={"What`s up?"}/>
+                <Message message={"What`s up?"}/>
             </div>
         </div>
     )
