@@ -8,6 +8,13 @@ import {Music} from "./components/Music/Music";
 import { News } from './components/News/News';
 import { Settings } from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
+import {store} from "./redux/store";
+
+type AppPropsType = {
+
+}
+
+store : RootS
 
 function App() {
     return (

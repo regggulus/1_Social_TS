@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { store } from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
+      store={store}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
