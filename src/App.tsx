@@ -14,7 +14,7 @@ type AppPropsType = {
 
 }
 
-store : RootS
+// store : RootS
 
 function App() {
     return (
@@ -23,7 +23,7 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className={'app-content'}>
-                    <Route path={'/profile'} component={Profile}/>
+                    <Route path={'/profile'} render={ () => <Profile/>}/>
                     <Route path={'/dialogs'} component={Dialogs}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
