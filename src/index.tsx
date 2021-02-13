@@ -7,8 +7,8 @@ import { store } from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-      store={store}
-    <App />
+
+    <App store={store}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

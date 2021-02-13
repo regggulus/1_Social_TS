@@ -1,16 +1,18 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
+import {PostType, ProfilePageType} from "../../../redux/store";
 
-export function MyPosts() {
+type MyPostsPropsType = {
+    posts: Array<PostType>
+}
 
-    const posts = [
-        {id: 1, message: "Hi, how are you", likesCount: "20"},
-        {id: 2, message: "It's my first post", likesCount: "25k"}
-    ]
-    const postsElements = posts
+export function MyPosts(props: MyPostsPropsType) {
+
+
+    const postsElements = props.posts
         .map(p => <Post
-                message={p.message}
+                message={props.posts}
                 likesCount={p.likesCount}
             />
         )

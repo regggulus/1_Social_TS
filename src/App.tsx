@@ -8,23 +8,24 @@ import {Music} from "./components/Music/Music";
 import { News } from './components/News/News';
 import { Settings } from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {store} from "./redux/store";
+import {store, RootStateType} from './redux/store'
 
 type AppPropsType = {
-
+    store: RootStateType
+    // addPost: () => void
 }
 
-// store : RootS
-
-function App() {
+function App(props: AppPropsType) {
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
                 <Navbar/>
                 <div className={'app-content'}>
-                    <Route path={'/profile'} render={ () => <Profile/>}/>
-                    <Route path={'/dialogs'} component={Dialogs}/>
+                    <Route path={'/profile'} render={ () =>
+                        <Profile profilePage={props.store.profilePage}/>}/>
+                    <Route path={'/dialogs'} render={ () =>
+                        <Dialogs dialogsPage={props.store.dialogsPage}/>}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
