@@ -7,20 +7,20 @@ type PostPropsType = {
     posts: PostType
 }
 
-export const  Post:React.FC<PostPropsType>=({posts})=> {
+export const Post: React.FC<PostPropsType> = ({posts}) => {
     return (
         <div className={s.item}>
             <div>
                 {/*{posts}*/}
-                    return (
-                        <div >
-                            <img src={Avatar} alt="avatar"/>
-                            {posts.message}
-                            <div>
-                                <span>like {posts.likesCount}</span>
-                            </div>
-                        </div>
-                    )
+                return (
+                <div>
+                    <img src={Avatar} alt="avatar"/>
+                    {posts.message}
+                    <div>
+                        <span>like {posts.likesCount}</span>
+                    </div>
+                </div>
+                )
 
             </div>
         </div>

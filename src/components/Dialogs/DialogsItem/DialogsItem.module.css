@@ -3,6 +3,13 @@
     color: #508aff;
     text-decoration: none;
 }
+.dialog img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
 .dialog a.active {
     color: red;
 }
+
