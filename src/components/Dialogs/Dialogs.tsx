@@ -13,7 +13,8 @@ export function Dialogs(props: DialogsPropsType) {
     const dialogsElements = props.dialogsPage.dialogs
         .map(d => <DialogsItem name={d.name} id={d.id}/>)
     const messagesElements = props.dialogsPage.messages
-        .map(m => <Message message={m.message}/>)
+        .map(m => <div className={s.active}>
+            <Message message={m.message}/></div>)
 
     return (
         <div className={s.dialogs}>
