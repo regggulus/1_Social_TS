@@ -4,24 +4,24 @@ import s from './Post.module.css'
 import {PostType} from "../../../../redux/store";
 
 type PostPropsType = {
-    post: Array<PostType>
+    posts: PostType
 }
 
-export function Post(props: PostPropsType) {
+export const  Post:React.FC<PostPropsType>=({posts})=> {
     return (
         <div className={s.item}>
             <div>
-                {props.post.map(l => {
+                {/*{posts}*/}
                     return (
-                        <div key={l.id}>
+                        <div >
                             <img src={Avatar} alt="avatar"/>
-                            {l.message}
+                            {posts.message}
                             <div>
-                                <span>like {l.likesCount}</span>
+                                <span>like {posts.likesCount}</span>
                             </div>
                         </div>
                     )
-                })}
+
             </div>
         </div>
     )

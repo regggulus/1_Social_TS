@@ -11,10 +11,8 @@ export function MyPosts(props: MyPostsPropsType) {
 
 
     const postsElements = props.posts
-        .map(p => <Post
-                message={props.posts}
-                likesCount={p.likesCount}
-            />
+        .map(post => <Post
+            posts={post} key={post.id}/>
         )
     return (
         <div className={s.myPost}>

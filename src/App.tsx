@@ -12,7 +12,6 @@ import {store, RootStateType} from './redux/store'
 
 type AppPropsType = {
     store: RootStateType
-    // addPost: () => void
 }
 
 function App(props: AppPropsType) {
