@@ -9,6 +9,7 @@ import { News } from './components/News/News';
 import { Settings } from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {store, RootStateType} from './redux/store'
+import {Sidebar} from "./components/Sidebar/Sidebar";
 
 type AppPropsType = {
     store: RootStateType
@@ -28,6 +29,8 @@ function App(props: AppPropsType) {
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
+                    <Route path={'/sidebar'} component={Sidebar}/>
+
                 </div>
 
             </div>

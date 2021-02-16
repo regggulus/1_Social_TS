@@ -1,0 +1,8 @@
+.friends {
+    padding: 10px;
+}
+.friends img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}

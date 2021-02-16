@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Friends } from "./Friends/Friends";
 import s from './Navbar.module.css'
+import Avatar from '../../img/avatar/vk-dog-1.jpg'
 
 export function Navbar() {
     return (
@@ -20,6 +22,11 @@ export function Navbar() {
             <div className={s.item}>
                 <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
             </div>
+            <p><div className={s.item}>
+                <NavLink to='/sidebar' activeClassName={s.active}>Friends
+                    <Friends/>
+                </NavLink>
+            </div></p>
         </div>
     )
 }

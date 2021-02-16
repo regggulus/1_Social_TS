@@ -12,7 +12,6 @@ export const Post: React.FC<PostPropsType> = ({posts}) => {
         <div className={s.item}>
             <div>
                 {/*{posts}*/}
-                return (
                 <div>
                     <img src={Avatar} alt="avatar"/>
                     {posts.message}
@@ -20,8 +19,6 @@ export const Post: React.FC<PostPropsType> = ({posts}) => {
                         <span>like {posts.likesCount}</span>
                     </div>
                 </div>
-                )
-
             </div>
         </div>
     )
