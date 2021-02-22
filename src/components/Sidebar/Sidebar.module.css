@@ -1,0 +1,10 @@
+.sidebar a {
+    padding: 10px;
+    color: #508aff;
+    text-decoration: none;
+}
+.sidebar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+}

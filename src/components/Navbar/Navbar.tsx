@@ -1,10 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Friends } from "./Friends/Friends";
+import {NavLink} from "react-router-dom";
 import s from './Navbar.module.css'
-import Avatar from '../../img/avatar/vk-dog-1.jpg'
+import {SidebarPageType} from "../../redux/store";
+import {Sidebar} from "../Sidebar/Sidebar";
 
-export function Navbar() {
+type NavbarPropsType = {
+    sidebarPage: SidebarPageType
+}
+
+export function Navbar(props: NavbarPropsType) {
+
     return (
         <div className={s.nav}>
             <div className={s.item}>
@@ -14,7 +19,7 @@ export function Navbar() {
                 <NavLink to='/dialogs' activeClassName={s.active}>Messages</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/news'  activeClassName={s.active}>News</NavLink>
+                <NavLink to='/news' activeClassName={s.active}>News</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to='/music' activeClassName={s.active}>Music</NavLink>
@@ -22,11 +27,14 @@ export function Navbar() {
             <div className={s.item}>
                 <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
             </div>
-            <p><div className={s.item}>
-                <NavLink to='/sidebar' activeClassName={s.active}>Friends
-                    <Friends/>
-                </NavLink>
-            </div></p>
+            <p>
+                <div className={s.item}>
+                    <NavLink to='/sidebar'
+                             activeClassName={s.active}>
+                        Friends{props.sidebarPage.sidebar.map
+                    (s => <Sidebar name={s.name} id={s.id}/>)}</NavLink>
+                </div>
+            </p>
         </div>
     )
 }

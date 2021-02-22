@@ -20,7 +20,7 @@ function App(props: AppPropsType) {
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Navbar/>
+                <Navbar sidebarPage={props.store.sidebarPage}/>
                 <div className={'app-content'}>
                     <Route path={'/profile'} render={ () =>
                         <Profile profilePage={props.store.profilePage}/>}/>
@@ -29,8 +29,8 @@ function App(props: AppPropsType) {
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
-                    <Route path={'/sidebar'} component={Sidebar}/>
-
+                    {/*<Route path={'/sidebar'} render={ () =>
+                    <Navbar sidebarPage={props.store.sidebarPage}/>}/>*/}
                 </div>
 
             </div>
