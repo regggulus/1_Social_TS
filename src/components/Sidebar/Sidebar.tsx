@@ -12,7 +12,7 @@ export function Sidebar(props: SidebarPropsType) {
     return (
         <div className={s.sidebar}>
             <img src={Avatar} alt="dog Friends"/>
-            {props.name}
+            <div className={s.sideName}>{props.name}</div>
         </div>
     )
 }

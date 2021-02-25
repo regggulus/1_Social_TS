@@ -6,6 +6,11 @@
 }
 .sidebar img {
     /*display: flex;*/
+    margin: 10px 10px 10px 10px;
     width: 40px;
     border-radius: 30px;
+}
+.sideName {
+    text-align: center;
+    /*padding-bottom: 15px;*/
 }

@@ -14,7 +14,8 @@
 
 .itemSide {
     display: flex;
-    /*width: 200px;*/
+    /*width: auto;*/
     /*height: 200px;*/
-    background-color: #737373;
+    /*background-color: #777373;*/
+    /*border-radius: 5px;*/
 }
