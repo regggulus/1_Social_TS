@@ -27,14 +27,21 @@ export function Navbar(props: NavbarPropsType) {
             <div className={s.item}>
                 <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
             </div>
-            <p>
-                <div className={s.item}>
+
+            <div className={s.item}>
+                <p>
                     <NavLink to='/sidebar'
                              activeClassName={s.active}>
-                        Friends{props.sidebarPage.sidebar.map
-                    (s => <Sidebar name={s.name} id={s.id}/>)}</NavLink>
-                </div>
-            </p>
+                        Friends</NavLink>
+                </p>
+            </div>
+
+            <div className={s.itemSide}>
+                {props.sidebarPage.sidebar.map
+                (s => <Sidebar name={s.name} id={s.id}/>)}
+            </div>
+
+
         </div>
     )
 }

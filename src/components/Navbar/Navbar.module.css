@@ -11,3 +11,10 @@
 .item a.active{
     color: goldenrod;
 }
+
+.itemSide {
+    display: flex;
+    /*width: 200px;*/
+    /*height: 200px;*/
+    background-color: #737373;
+}

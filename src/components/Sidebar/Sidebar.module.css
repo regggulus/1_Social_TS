@@ -1,10 +1,11 @@
-.sidebar a {
+.sidebar {
+/*display: flex;*/
     padding: 10px;
-    color: #508aff;
-    text-decoration: none;
+    color: #ffffff;
+    /*text-decoration: none;*/
 }
 .sidebar img {
+    /*display: flex;*/
     width: 40px;
-    height: 40px;
     border-radius: 30px;
 }
