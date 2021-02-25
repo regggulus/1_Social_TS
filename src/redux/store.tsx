@@ -55,8 +55,7 @@ export let store: RootStateType = {
             {id: 1, message: "A lot of my staff..."},
             {id: 2, message: "Oke, we`ll see"},
             {id: 3, message: "Dont`s know"},
-            {id: 4, message: "What`s up?"},
-            {id: 5, message: "What`s up?"}
+            {id: 4, message: "What`s up?"}
 
         ]
     },
