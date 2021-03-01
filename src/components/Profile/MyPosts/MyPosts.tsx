@@ -4,19 +4,23 @@ import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/store";
 
 type MyPostsPropsType = {
-    posts: Array<PostType>
+    post: Array<PostType>
+    addPost: (postMessage: string) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
-    const postsElements = props.posts
+    const postsElements = props.post
         .map(post => <Post
-            posts={post} key={post.id}/>
+            post={post} key={post.id}/>
         )
-    let newPostElement: any = React.createRef()
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+
     let addPost = () => {
-        let text = newPostElement.current.value
-        alert(text)
+        debugger
+        if (newPostElement.current) {
+            props.addPost(newPostElement.current?.value)
+        }
     }
     return (
         <div className={s.myPost}>
