@@ -1,3 +1,6 @@
+import {rerenderEntireTree} from "../render";
+
+
 export type DialogType = {
     id: number
     name: string
@@ -78,6 +81,6 @@ export const addPost = (postMessage: string) => {
     }
     store.profilePage.postMessage = ""
     store.profilePage.post.push(newPost)
+    rerenderEntireTree(store)
 }
-
 export default store;
