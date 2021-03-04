@@ -1,6 +1,4 @@
-let rerenderEntireTree = () => {
-    console.log("State")
-}
+let rerenderEntireTree = () => {}
 
 
 export type DialogType = {
