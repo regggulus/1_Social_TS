@@ -1,7 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {PostType, ProfilePageType} from "../../../redux/store";
+import {ProfilePageType} from "../../../redux/state";
 
 type MyPostsPropsType = {
     profilePage: ProfilePageType
@@ -13,7 +13,7 @@ export function MyPosts(props: MyPostsPropsType) {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    const postsElements = props.profilePage.post
+    const postsElements = props.profilePage.posts
         .map(post => <Post
             post={post} key={post.id}/>
         )
@@ -22,7 +22,7 @@ export function MyPosts(props: MyPostsPropsType) {
     let addPost = () => {
         if (newPostElement.current) {
             props.addPost(newPostElement.current?.value)
-            newPostElement.current.value = ''
+            // props.changeNewPostText('')
         }
     }
     const onPostChange = () => {

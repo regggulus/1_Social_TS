@@ -8,7 +8,7 @@ import {Music} from "./components/Music/Music";
 import {News} from './components/News/News';
 import {Settings} from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {RootStateType} from "./redux/store";
+import {RootStateType} from "./redux/state";
 
 
 type AppPropsType = {

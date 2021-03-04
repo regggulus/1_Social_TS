@@ -6,7 +6,7 @@ export function ProfileInfo() {
     return (
         <div className={s.profileInfo}>
             <div>
-                <img src={Cover}/>
+                <img src={Cover} alt={""}/>
             </div>
             <div className={s.descriptionBlock}>
                 ava + description
