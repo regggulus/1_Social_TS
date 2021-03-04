@@ -8,16 +8,18 @@ import {Music} from "./components/Music/Music";
 import {News} from './components/News/News';
 import {Settings} from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {RootStateType} from "./redux/state";
+import {RootStateType, StoreType} from "./redux/state";
 
 
 type AppPropsType = {
     state: RootStateType
     changeNewPostText: (newText: string) => void
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    store: StoreType
 }
 
-function App(props: AppPropsType) {
+export function App(props: AppPropsType) {
+    // const state = (props.store.getState)
     return (
         <BrowserRouter>
             <div className="App">
@@ -26,8 +28,8 @@ function App(props: AppPropsType) {
                 <div className={'app-content'}>
                     <Route path={'/profile'} render={ () =>
                         <Profile profilePage={props.state.profilePage}
-                                 addPost={props.addPost}
-                                 changeNewPostText={props.changeNewPostText}
+                                 addPost={props.store.addPost.bind(props.store)}
+                                 changeNewPostText={props.store.changeNewPostText.bind(props.store)}
                         />}/>
                     <Route path={'/dialogs'} render={ () =>
                         <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
@@ -41,5 +43,3 @@ function App(props: AppPropsType) {
             </div>
         </BrowserRouter>);
 }
-
-export default App;
