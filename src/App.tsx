@@ -18,8 +18,8 @@ type AppPropsType = {
     store: StoreType
 }
 
-export function App(props: AppPropsType) {
-    // const state = (props.store.getState)
+export const App: React.FC<AppPropsType> = (props) => {
+    const state = (props.store.getState)
     return (
         <BrowserRouter>
             <div className="App">

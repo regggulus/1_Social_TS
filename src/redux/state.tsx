@@ -1,4 +1,4 @@
-import {rerenderEntireTree} from "../index";
+import {rerender} from "../index";
 
 export type DialogType = {
     id: number
@@ -38,8 +38,8 @@ export type StoreType = {
     _state: RootStateType
     changeNewPostText: (newText: string) => void
     addPost: () => void
-    rerenderEntireTree: () => void
-    subsriber: (observer: () => void) => void
+    onChange: () => void
+    subscriber: (observer: () => void) => void
     getState: () => RootStateType
 
 }
@@ -85,18 +85,16 @@ export const store: StoreType = {
         }
         this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ""
-        rerenderEntireTree()
+        rerender()
     },
     changeNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
-        this.rerenderEntireTree()
+        this.onChange()
     },
-    subsriber(observer: () => void) {
-        this.rerenderEntireTree = observer
+    subscriber(observer) {
+        this.onChange = observer
     },
-    rerenderEntireTree() {
-
-    },
+    onChange() {console.log('state change')},
     getState() {
         return this._state
     }
