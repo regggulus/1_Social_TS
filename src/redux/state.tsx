@@ -1,4 +1,9 @@
-import {rerender} from "../index";
+let onChange = () => {
+    console.log("hi")
+}
+export const subscriber = (observer: () => void) => {
+    onChange = observer
+}
 
 export type DialogType = {
     id: number
@@ -37,11 +42,23 @@ export type RootStateType = {
 export type StoreType = {
     _state: RootStateType
     changeNewPostText: (newText: string) => void
-    addPost: () => void
-    onChange: () => void
+    addPost: (addNewPost: string) => void
+    _onChange: () => void
     subscriber: (observer: () => void) => void
     getState: () => RootStateType
+    dispatch: (action: ActionsTypes) => void
+}
+export type ActionsTypes = AddPostAC | ChangeNewPostTextAC
+export type AddPostAC = {
 
+    type: 'ADD-POST'
+    addNewPost: string
+
+}
+
+export type ChangeNewPostTextAC = {
+    type: 'CHANGE-NEW-POST-TEXT'
+    newText: string
 }
 
 export const store: StoreType = {
@@ -77,26 +94,43 @@ export const store: StoreType = {
             ]
         }
     },
-    addPost() {
+    addPost(addNewPost: string) {
         const newPost: PostType = {
             id: 3,
-            message: this._state.profilePage.newPostText,
+            message: addNewPost,
             likesCount: 0
         }
         this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ""
-        rerender()
+        // this._state.profilePage.newPostText = ""
+        this._onChange()
     },
     changeNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
-        this.onChange()
+        this._onChange()
     },
     subscriber(observer) {
-        this.onChange = observer
+        this._onChange = observer
     },
-    onChange() {console.log('state change')},
+    _onChange() {console.log('state change')},
     getState() {
         return this._state
+    },
+
+    dispatch(action) {
+        if(action.type === 'ADD-POST') {
+            const newPost: PostType = {
+                id: 3,
+                message: action.addNewPost,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = action.addNewPost
+            this._onChange()
+        }else if (action.type === 'CHANGE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._onChange()
+        }
+
     }
 }
 

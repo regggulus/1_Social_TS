@@ -1,29 +1,27 @@
 import React from "react";
 import s from './MyPosts.module.css'
+import {ActionsTypes, PostType} from "../../../redux/state";
 import {Post} from "./Post/Post";
-import {ProfilePageType} from "../../../redux/state";
 
 type MyPostsPropsType = {
-    profilePage: ProfilePageType
-    addPost: (postMessage: string) => void
+    posts: Array<PostType>
+    addPost: (addNewPost: string) => void
     changeNewPostText: (newText: string) => void
+    newPostText: string
+    dispatch: (action: ActionsTypes) => void
 }
 
 export function MyPosts(props: MyPostsPropsType) {
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
-
-    const postsElements = props.profilePage.posts
-        .map(post => <Post
-            post={post} key={post.id}/>
-        )
-
+    const newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
-        if (newPostElement.current) {
+        props.addPost(props.newPostText)
+        // props.dispatch({type: "ADD-POST"})
+        /*if (newPostElement.current) {
             props.addPost(newPostElement.current?.value)
-            // props.changeNewPostText('')
-        }
+            props.changeNewPostText('')
+        }*/
     }
     const onPostChange = () => {
         if (newPostElement.current) {
@@ -37,7 +35,7 @@ export function MyPosts(props: MyPostsPropsType) {
             <div>
                 <div>
                     <textarea onChange={onPostChange} ref={newPostElement}
-                              value={props.profilePage.newPostText}>
+                              value={props.newPostText}>
                     </textarea>
                 </div>
                 <div>
@@ -45,7 +43,7 @@ export function MyPosts(props: MyPostsPropsType) {
                 </div>
             </div>
             <div className={s.posts}>
-                {postsElements}
+                <Post posts={props.posts}/>
             </div>
         </div>
     )

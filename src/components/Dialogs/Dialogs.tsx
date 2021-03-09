@@ -2,10 +2,11 @@ import React from "react";
 import s from './Dialogs.module.css';
 import {DialogsItem} from "./DialogsItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogsPageType} from "../../redux/state";
+import {ActionsTypes, DialogsPageType} from "../../redux/state";
 
 type DialogsPropsType = {
     dialogsPage: DialogsPageType
+    dispatch: (action: ActionsTypes) => void
 }
 
 export function Dialogs(props: DialogsPropsType) {
@@ -15,12 +16,16 @@ export function Dialogs(props: DialogsPropsType) {
 
     const messagesElements = props.dialogsPage.messages
         .map(m => <div className={s.active}>
-            <Message message={m.message}/>
+            <Message message={m.message}
+            />
         </div>)
-    const newMessageElement: any = React.createRef()
-    const addMessage = () => {
-        const text = newMessageElement.current.value
-        alert(text)
+
+    const onSendMessageClick = () => {
+        console.log('text')
+    }
+    const onNewMessageChange = (e: any) => {
+        const newMessageText = e.currentTarget.value
+        alert(newMessageText)
     }
 
     return (
@@ -31,8 +36,10 @@ export function Dialogs(props: DialogsPropsType) {
             <div className={s.messages}>
                 <div>{messagesElements}</div>
                 <div className={s.messagesInput}>
-                   <div><textarea ref={newMessageElement}></textarea></div>
-                    <div><button onClick={addMessage}>add</button></div>
+                   <div><textarea 
+                       ref={onSendMessageClick}></textarea></div>
+                    <div><button 
+                        onClick={onNewMessageChange}>add</button></div>
                 </div>
             </div>
         </div>

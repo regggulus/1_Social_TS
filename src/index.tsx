@@ -5,13 +5,15 @@ import reportWebVitals from './reportWebVitals';
 import {store} from "./redux/state";
 import {App} from "./App";
 
-export function rerender () {
+export function rerender() {
     ReactDOM.render(
         <React.StrictMode>
             <App store={store}
                  state={store._state}
-                 addPost={store.addPost}
-                 changeNewPostText={store.changeNewPostText}/>
+                 addPost={store.addPost.bind(store)}
+                 changeNewPostText={store.changeNewPostText.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
+            />
         </React.StrictMode>,
         document.getElementById('root')
     );
