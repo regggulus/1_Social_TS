@@ -1,8 +1,8 @@
-let onChange = () => {
+let _onChange = () => {
     console.log("hi")
 }
 export const subscriber = (observer: () => void) => {
-    onChange = observer
+    _onChange = observer
 }
 
 export type DialogType = {
@@ -41,8 +41,8 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    changeNewPostText: (newText: string) => void
-    addPost: (addNewPost: string) => void
+    _changeNewPostText: (newText: string) => void
+    _addPost: (addNewPost: string) => void
     _onChange: () => void
     subscriber: (observer: () => void) => void
     getState: () => RootStateType
@@ -50,12 +50,9 @@ export type StoreType = {
 }
 export type ActionsTypes = AddPostAC | ChangeNewPostTextAC
 export type AddPostAC = {
-
     type: 'ADD-POST'
     addNewPost: string
-
 }
-
 export type ChangeNewPostTextAC = {
     type: 'CHANGE-NEW-POST-TEXT'
     newText: string
@@ -94,17 +91,17 @@ export const store: StoreType = {
             ]
         }
     },
-    addPost(addNewPost: string) {
+    _addPost(addNewPost: string) {
         const newPost: PostType = {
             id: 3,
             message: addNewPost,
             likesCount: 0
         }
         this._state.profilePage.posts.push(newPost)
-        // this._state.profilePage.newPostText = ""
+        this._state.profilePage.newPostText = ""
         this._onChange()
     },
-    changeNewPostText(newText: string) {
+    _changeNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._onChange()
     },
@@ -118,17 +115,16 @@ export const store: StoreType = {
 
     dispatch(action) {
         if(action.type === 'ADD-POST') {
-            const newPost: PostType = {
+            this._addPost(action.addNewPost)
+            /*const newPost: PostType = {
                 id: 3,
                 message: action.addNewPost,
                 likesCount: 0
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = action.addNewPost
-            this._onChange()
+            }*/
         }else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._onChange()
+            /* this._state.profilePage.newPostText = action.newText
+            this._onChange()*/
+            this._changeNewPostText(action.newText)
         }
 
     }

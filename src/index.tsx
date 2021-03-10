@@ -10,8 +10,8 @@ export function rerender() {
         <React.StrictMode>
             <App store={store}
                  state={store._state}
-                 addPost={store.addPost.bind(store)}
-                 changeNewPostText={store.changeNewPostText.bind(store)}
+                 addPost={store._addPost.bind(store)}
+                 changeNewPostText={store._changeNewPostText.bind(store)}
                  dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>,

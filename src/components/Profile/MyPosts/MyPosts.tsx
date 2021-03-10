@@ -26,7 +26,7 @@ export function MyPosts(props: MyPostsPropsType) {
     const onPostChange = () => {
         if (newPostElement.current) {
             const text = newPostElement.current.value
-            props.changeNewPostText(text)
+            // props.changeNewPostText(text)
             props.dispatch({type: "CHANGE-NEW-POST-TEXT", newText: text})
         }
     }
