@@ -1,11 +1,10 @@
 import React from "react";
 import Avatar from '../../../../img/avatar/StickerExample.jpg';
 import s from './Post.module.css'
-import {ActionsTypes, PostType} from "../../../../redux/state";
+import {PostType} from "../../../../redux/state";
 
 type PostPropsType = {
     posts: Array<PostType>
-    // dispatch: (actions: ActionsTypes) => void
 }
 
 export function Post(props: PostPropsType){

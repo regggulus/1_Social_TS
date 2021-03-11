@@ -13,8 +13,10 @@ import {ActionsTypes, RootStateType, StoreType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
-    changeNewPostText: (newText: string) => void
     addPost: (addNewPost: string) => void
+    changeNewPostText: (newText: string) => void
+    changeNewMessageText: (newText: string) => void
+    newSendMessage: (newSendMessage: string) => void
     store: StoreType
     dispatch: (action: ActionsTypes) => void
 }
@@ -38,6 +40,8 @@ export const App: React.FC<AppPropsType> = (props) => {
                     <Route path={'/dialogs'} render={ () =>
                         <Dialogs dialogsPage={props.state.dialogsPage}
                                  dispatch={props.dispatch}
+                                 changeNewMessageText={props.changeNewMessageText}
+                                 newSendMessage={props.newSendMessage}
                         />}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>

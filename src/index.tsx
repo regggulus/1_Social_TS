@@ -12,6 +12,8 @@ export function rerender() {
                  state={store._state}
                  addPost={store._addPost.bind(store)}
                  changeNewPostText={store._changeNewPostText.bind(store)}
+                 changeNewMessageText={store._changeNewMessageText.bind(store)}
+                 newSendMessage={store._newSendMessage.bind(store)}
                  dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>,

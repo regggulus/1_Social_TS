@@ -2,14 +2,14 @@ import React from "react";
 import s from './Message.module.css'
 
 type MessagePropsType = {
-    message: string
+    messages: string
 }
 
 export function Message(props: MessagePropsType) {
     return (
         <div className={s.message}>
             <div>
-                {props.message}
+                {props.messages}
             </div>
         </div>
     )
