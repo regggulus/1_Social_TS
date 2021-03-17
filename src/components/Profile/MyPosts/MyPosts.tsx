@@ -1,7 +1,8 @@
 import React from "react";
 import s from './MyPosts.module.css'
-import {ActionsTypes, addPostAC, changeNewPostTextAC, PostType} from "../../../redux/state";
+import {ActionsTypes, PostType} from "../../../redux/state";
 import {Post} from "./Post/Post";
+import {addPostAC, changeNewPostTextAC} from "../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
     posts: Array<PostType>
@@ -28,7 +29,6 @@ export function MyPosts(props: MyPostsPropsType) {
     const onPostChange = () => {
         if (newPostElement.current) {
             const text = newPostElement.current.value
-            // props.changeNewPostText(text)
             props.dispatch(changeNewPostTextAC(text))
         }
     }
@@ -37,8 +37,11 @@ export function MyPosts(props: MyPostsPropsType) {
             <h2>My post</h2>
             <div>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement}
-                              value={props.newPostText}>
+                    <textarea onChange={onPostChange}
+                              ref={newPostElement}
+                              value={props.newPostText}
+                              placeholder={'Enter your message'}
+                    >
                     </textarea>
                 </div>
                 <div>

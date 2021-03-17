@@ -1,3 +1,6 @@
+import {addPostAC, changeNewPostTextAC, profileReducer} from "./profile-reducer";
+import {changeNewMessageAC, dialogsReducer, newSendMessageAC} from "./dialogs-reducer";
+
 let _onChange = () => {
     console.log("hi")
 }
@@ -55,13 +58,8 @@ export type StoreType = {
 export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC> | ReturnType<typeof changeNewMessageAC> | ReturnType<typeof newSendMessageAC>
 
 
-export const addPostAC = (addNewPost: string) =>
-    ({type: "ADD-POST", addNewPost: addNewPost}) as const
-export const changeNewPostTextAC = (newText: string) =>
-    ({type: 'CHANGE-NEW-POST-TEXT', newText: newText}) as const
-export const changeNewMessageAC = (newMessageText: string) =>
-    ({type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText: newMessageText}) as const
-export const newSendMessageAC = (newSendMessage: string) => ({type: 'SEND-MESSAGE', newSendMessage: newSendMessage}) as const
+
+
 
 
 
@@ -98,7 +96,7 @@ export const store: StoreType = {
             ]
         }
     },
-    _addPost(addNewPost: string) {
+    /*_addPost(addNewPost: string) {
         const newPost: PostType = {
             id: 3,
             message: addNewPost,
@@ -107,11 +105,11 @@ export const store: StoreType = {
         this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ""
         this._onChange()
-    },
-    _changeNewPostText(newText: string) {
+    },*/
+    /*_changeNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._onChange()
-    },
+    },*/
     _changeNewMessageText(newMessageText: string) {
         this._state.dialogsPage.newMessageText = newMessageText
         this._onChange();
@@ -133,11 +131,11 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            this._addPost(action.addNewPost)
-        } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-            this._changeNewPostText(action.newText)
-        } else if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
+
+        profileReducer(this._state.profilePage, action)
+        dialogsReducer(this._state.dialogsPage, action)
+
+        /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
             this._state.dialogsPage.newMessageText = action.newMessageText
             this._onChange();
         } else if (action.type === 'SEND-MESSAGE') {
@@ -145,7 +143,7 @@ export const store: StoreType = {
             this._state.dialogsPage.newMessageText = ''
             this._state.dialogsPage.messages.push({id: 6, message: message})
             this._onChange();
-        }
+        }*/
 
 
     }
