@@ -59,10 +59,6 @@ export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof chan
 
 
 
-
-
-
-
 export const store: StoreType = {
     _state: {
         profilePage: {
@@ -96,7 +92,7 @@ export const store: StoreType = {
             ]
         }
     },
-    /*_addPost(addNewPost: string) {
+    _addPost(addNewPost: string) {
         const newPost: PostType = {
             id: 3,
             message: addNewPost,
@@ -105,11 +101,11 @@ export const store: StoreType = {
         this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ""
         this._onChange()
-    },*/
-    /*_changeNewPostText(newText: string) {
+    },
+    _changeNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._onChange()
-    },*/
+    },
     _changeNewMessageText(newMessageText: string) {
         this._state.dialogsPage.newMessageText = newMessageText
         this._onChange();
@@ -134,10 +130,11 @@ export const store: StoreType = {
 
         profileReducer(this._state.profilePage, action)
         dialogsReducer(this._state.dialogsPage, action)
+        this._onChange();
 
         /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.newMessageText
             this._onChange();
+            this._state.dialogsPage.newMessageText = action.newMessageText
         } else if (action.type === 'SEND-MESSAGE') {
             let message =  this._state.dialogsPage.newMessageText
             this._state.dialogsPage.newMessageText = ''
@@ -149,4 +146,4 @@ export const store: StoreType = {
     }
 }
 
-// export default store;
+export default store;

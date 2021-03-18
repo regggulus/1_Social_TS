@@ -9,9 +9,19 @@ export const changeNewPostTextAC = (newText: string) =>
 
 export const profileReducer = (state: ProfilePageType, action: ActionsTypes) => {
     if (action.type === 'ADD-POST') {
-        state._addPost(action.addNewPost)
+        let newPost = {
+            id: 5,
+            message: action.addNewPost,
+            likesCount: 0
+        }
+        let copyState = {...state}
+        copyState.posts.push(newPost)
+        copyState.newPostText = ''
+         return copyState
     } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-        state._changeNewPostText(action.newText)
+        let copyState = {...state}
+        copyState.newPostText = action.newText
+        return state
     }
-    return state
+
 }

@@ -7,12 +7,14 @@ export const newSendMessageAC = (newSendMessage: string) => ({type: 'SEND-MESSAG
 export const dialogsReducer = (state: DialogsPageType, action: ActionsTypes) => {
 
     if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-        state.newMessageText = action.newMessageText
-        // state._onChange();
+        let copyState = {...state}
+        copyState.newMessageText = action.newMessageText
+        return state
     } else if (action.type === 'SEND-MESSAGE') {
-        let message =  state.newMessageText
-        state.newMessageText = ''
-        state.messages.push({id: 6, message: message})
+        let copyState = {...state}
+        copyState.newMessageText = action.newSendMessage
+        copyState.newMessageText = ''
+        copyState.messages.push({id: 6, message: action.newSendMessage })
         // state._onChange();
     }
     return state
