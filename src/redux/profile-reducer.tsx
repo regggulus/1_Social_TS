@@ -6,22 +6,33 @@ export const changeNewPostTextAC = (newText: string) =>
     ({type: 'CHANGE-NEW-POST-TEXT', newText: newText}) as const
 
 
-
 export const profileReducer = (state: ProfilePageType, action: ActionsTypes) => {
-    if (action.type === 'ADD-POST') {
-        let newPost = {
-            id: 5,
-            message: action.addNewPost,
-            likesCount: 0
-        }
-        let copyState = {...state}
-        copyState.posts.push(newPost)
-        copyState.newPostText = ''
-         return copyState
-    } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-        let copyState = {...state}
-        copyState.newPostText = action.newText
-        return state
+
+    switch (action.type) {
+        case "ADD-POST":
+            let newPost = {
+                id: 3,
+                message: action.addNewPost,
+                likesCount: 0
+            }
+            state.posts.push(newPost)
+            state.newPostText = ''
+            return state
+        case "CHANGE-NEW-POST-TEXT":
+            // let copyState = {...state}
+            state.newPostText = action.newText
+            return state
+        default:
+            return state
     }
+
+    /*if (action.type === 'ADD-POST') {
+
+        let copyState = {...state}
+
+         return state
+    } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
+
+    }*/
 
 }

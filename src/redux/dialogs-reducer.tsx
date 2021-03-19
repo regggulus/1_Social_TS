@@ -6,7 +6,20 @@ export const newSendMessageAC = (newSendMessage: string) => ({type: 'SEND-MESSAG
 
 export const dialogsReducer = (state: DialogsPageType, action: ActionsTypes) => {
 
-    if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
+    switch (action.type) {
+        case "CHANGE-NEW-MESSAGE-TEXT":
+            state.newMessageText = action.newMessageText
+            return state
+        case "SEND-MESSAGE":
+            state.newMessageText = action.newSendMessage
+            state.newMessageText = ''
+            state.messages.push({id: 6, message: action.newSendMessage})
+            return state
+        default:
+            return state
+    }
+
+    /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
         let copyState = {...state}
         copyState.newMessageText = action.newMessageText
         return state
@@ -15,7 +28,6 @@ export const dialogsReducer = (state: DialogsPageType, action: ActionsTypes) => 
         copyState.newMessageText = action.newSendMessage
         copyState.newMessageText = ''
         copyState.messages.push({id: 6, message: action.newSendMessage })
-        // state._onChange();
     }
-    return state
+    return state*/
 }
