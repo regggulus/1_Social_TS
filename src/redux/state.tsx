@@ -1,5 +1,6 @@
 import {addPostAC, changeNewPostTextAC, profileReducer} from "./profile-reducer";
 import {changeNewMessageAC, dialogsReducer, newSendMessageAC} from "./dialogs-reducer";
+import {sidebarReducer} from "./sidebar-reducer";
 
 let _onChange = () => {
     console.log("hi")
@@ -130,6 +131,7 @@ export const store: StoreType = {
 
         profileReducer(this._state.profilePage, action)
         dialogsReducer(this._state.dialogsPage, action)
+        sidebarReducer(this._state.sidebarPage, action)
         this._onChange();
 
         /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {

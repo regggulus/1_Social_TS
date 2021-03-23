@@ -18,16 +18,4 @@ export const dialogsReducer = (state: DialogsPageType, action: ActionsTypes) => 
         default:
             return state
     }
-
-    /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-        let copyState = {...state}
-        copyState.newMessageText = action.newMessageText
-        return state
-    } else if (action.type === 'SEND-MESSAGE') {
-        let copyState = {...state}
-        copyState.newMessageText = action.newSendMessage
-        copyState.newMessageText = ''
-        copyState.messages.push({id: 6, message: action.newSendMessage })
-    }
-    return state*/
 }

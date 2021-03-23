@@ -25,14 +25,4 @@ export const profileReducer = (state: ProfilePageType, action: ActionsTypes) => 
         default:
             return state
     }
-
-    /*if (action.type === 'ADD-POST') {
-
-        let copyState = {...state}
-
-         return state
-    } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-
-    }*/
-
 }
