@@ -9,7 +9,7 @@ export function rerender() {
     ReactDOM.render(
         <React.StrictMode>
             <App store={store}
-                 state={store._state}
+                 state={store.getState()}
                  addPost={store._addPost.bind(store)}
                  changeNewPostText={store._changeNewPostText.bind(store)}
                  changeNewMessageText={store._changeNewMessageText.bind(store)}

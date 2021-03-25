@@ -1,12 +1,20 @@
 import {ActionsTypes, ProfilePageType} from "./state";
 
+const initialState = {
+    posts: [
+        {id: 1, message: "Hi, how are you", likesCount: 20},
+        {id: 2, message: "It's my first post", likesCount: 25}
+    ],
+    newPostText: ''
+}
+
 export const addPostAC = (addNewPost: string) =>
     ({type: "ADD-POST", addNewPost: addNewPost}) as const
 export const changeNewPostTextAC = (newText: string) =>
     ({type: 'CHANGE-NEW-POST-TEXT', newText: newText}) as const
 
 
-export const profileReducer = (state: ProfilePageType, action: ActionsTypes) => {
+export const profileReducer = (state = initialState, action: ActionsTypes) => {
 
     switch (action.type) {
         case "ADD-POST":
