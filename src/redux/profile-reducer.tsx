@@ -1,4 +1,5 @@
-import {ActionsTypes, ProfilePageType} from "./state";
+import {ActionsTypes, PostType, ProfilePageType} from "./state";
+import {rerender} from "../index";
 
 export const addPostAC = (addNewPost: string) =>
     ({type: "ADD-POST", addNewPost: addNewPost}) as const
@@ -16,17 +17,19 @@ export const changeNewPostTextAC = (newText: string) =>
 
         switch (action.type) {
             case "ADD-POST":
-                let newPost = {
+                let newPost: PostType = {
                     id: 3,
                     message: action.addNewPost,
                     likesCount: 0
                 }
                 state.posts.push(newPost)
                 state.newPostText = ''
+                rerender()
                 return state
             case "CHANGE-NEW-POST-TEXT":
                 // let copyState = {...state}
                 state.newPostText = action.newText
+                rerender()
                 return state
             default:
                 return state

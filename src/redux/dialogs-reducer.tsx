@@ -1,4 +1,5 @@
 import {ActionsTypes, DialogsPageType} from "./state";
+import {rerender} from "../index";
 
 const initialState = {
     dialogs: [
@@ -26,11 +27,13 @@ export const dialogsReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case "CHANGE-NEW-MESSAGE-TEXT":
             state.newMessageText = action.newMessageText
+            rerender()
             return state
         case "SEND-MESSAGE":
             state.newMessageText = action.newSendMessage
             state.newMessageText = ''
             state.messages.push({id: 6, message: action.newSendMessage})
+            rerender()
             return state
         default:
             return state

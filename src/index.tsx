@@ -9,7 +9,8 @@ import {store} from "./redux/state";
 export function rerender() {
     ReactDOM.render(
         <React.StrictMode>
-            <App store={store}
+            <App
+                store={store}
                  state={store.getState()}
                  addPost={store._addPost.bind(store)}
                  changeNewPostText={store._changeNewPostText.bind(store)}
@@ -22,6 +23,6 @@ export function rerender() {
     );
 }
 
-store.subscriber(rerender)
 rerender()
+store.subscriber(rerender)
 reportWebVitals();
