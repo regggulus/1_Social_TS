@@ -3,12 +3,13 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
-import {Dialogs} from './components/Dialogs/Dialogs';
+// import {Dialogs} from './components/Dialogs/Dialogs';
 import {Music} from "./components/Music/Music";
 import {News} from './components/News/News';
 import {Settings} from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {ActionsTypes, RootStateType, StoreType} from "./redux/state";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
@@ -28,20 +29,22 @@ export const App: React.FC<AppPropsType> = (props) => {
             <div className="App">
                 <Header/>
                 <Navbar sidebarPage={props.state.sidebarPage}
-                        // dispatch={props.dispatch}
+                    // dispatch={props.dispatch}
                 />
                 <div className={'app-content'}>
-                    <Route path={'/profile'} render={ () =>
-                        <Profile profilePage={props.state.profilePage}
+                    <Route path={'/profile'} render={() =>
+                        <Profile store={props.store}
+                                 profilePage={props.state.profilePage}
                                  dispatch={props.dispatch}
                                  addPost={props.addPost}
                                  changeNewPostText={props.changeNewPostText}
                         />}/>
-                    <Route path={'/dialogs'} render={ () =>
-                        <Dialogs dialogsPage={props.state.dialogsPage}
-                                 dispatch={props.dispatch}
-                                 changeNewMessageText={props.changeNewMessageText}
-                                 newSendMessage={props.newSendMessage}
+                    <Route path={'/dialogs'} render={() =>
+                        <DialogsContainer store={props.store}
+                                          dialogsPage={props.state.dialogsPage}
+                                          dispatch={props.dispatch}
+                                          changeNewMessageText={props.changeNewMessageText}
+                                          newSendMessage={props.newSendMessage}
                         />}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>

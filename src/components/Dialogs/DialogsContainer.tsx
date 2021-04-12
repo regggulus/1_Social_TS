@@ -2,41 +2,40 @@ import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css';
 import {DialogsItem} from "./DialogsItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {ActionsTypes, DialogsPageType} from "../../redux/state";
+import {ActionsTypes, DialogsPageType, StoreType} from "../../redux/state";
 import {changeNewMessageAC, newSendMessageAC} from "../../redux/dialogs-reducer";
+import {Dialogs} from "./Dialogs";
 
 type DialogsPropsType = {
+    store: StoreType
     dialogsPage: DialogsPageType
     dispatch: (action: ActionsTypes) => void
     changeNewMessageText: (newText: string) => void
     newSendMessage: (newSendMessage: string) => void
 }
 
-export function Dialogs(props: DialogsPropsType) {
+export function DialogsContainer(props: DialogsPropsType) {
+    const state = props.store.getState().dialogsPage
 
-    const state = props.dialogsPage
-
-    const dialogsElements = props.dialogsPage.dialogs
+    /*const dialogsElements = props.dialogsPage.dialogs
         .map(d => <DialogsItem name={d.name} id={d.id}/>)
 
     const messagesElements = props.dialogsPage.messages
         .map(m => <div className={s.active}>
             <Message messages={m.message}/></div>)
-    const newMessageText = props.dialogsPage.newMessageText
+    const newMessageText = props.dialogsPage.newMessageText*/
 
-    const onSendMessageClick = () => {
-        props.newSendMessage(newMessageText)
-       // props.dispatch(newSendMessageAC(newMessageText))
+    const onSendMessageClick = (newMessageText: string) => {
+       props.store.dispatch(newSendMessageAC(newMessageText))
     }
-
-    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const newMessageText = e.currentTarget.value
-        props.changeNewMessageText(newMessageText)
-        // props.dispatch(changeNewMessageAC(newMessageText))
+    const onNewMessageChange = (newMessageText: string) => {
+        // const newMessageText = e.currentTarget.value
+        props.store.dispatch(changeNewMessageAC(newMessageText))
     }
 
     return (
-        <div className={s.dialogs}>
+        <Dialogs dialogsPage={state} dispatch={props.dispatch} changeNewMessageText={onNewMessageChange} newSendMessage={onSendMessageClick}/>
+        /*<div className={s.dialogs}>
             <div className={s.dialogsItem}>
                 {dialogsElements}
             </div>
@@ -52,6 +51,6 @@ export function Dialogs(props: DialogsPropsType) {
                         onClick={onSendMessageClick}>add</button></div>
                 </div>
             </div>
-        </div>
+        </div>*/
     )
 }

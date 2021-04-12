@@ -1,10 +1,12 @@
 import React from "react";
-import s from './MyPosts.module.css'
-import {ActionsTypes, PostType} from "../../../redux/state";
-import {Post} from "./Post/Post";
+// import s from './MyPosts.module.css'
+import {ActionsTypes, PostType, StoreType} from "../../../redux/state";
+// import {Post} from "./Post/Post";
 import {addPostAC, changeNewPostTextAC} from "../../../redux/profile-reducer";
+import {MyPosts} from "./MyPosts";
 
 type MyPostsPropsType = {
+    store: StoreType
     posts: Array<PostType>
     addPost: (addNewPost: string) => void
     changeNewPostText: (newText: string) => void
@@ -15,22 +17,25 @@ type MyPostsPropsType = {
 
 export function MyPostsContainer(props: MyPostsPropsType) {
 
-    const newPostElement = React.createRef<HTMLTextAreaElement>()
+    // const newPostElement = React.createRef<HTMLTextAreaElement>()
+    const state = props.store.getState()
 
     let addPost = () => {
-        if (newPostElement.current) {
-            props.dispatch(addPostAC(props.newPostText))
+        props.store.dispatch(addPostAC(props.newPostText))
+        /*if (newPostElement.current) {
+            props.store.dispatch(addPostAC(props.newPostText))
             props.changeNewPostText('')
-        }
+        }*/
     }
-    const onPostChange = () => {
-        if (newPostElement.current) {
+    const onPostChange = (text: string) => {
+        props.store.dispatch(changeNewPostTextAC(text))
+        /*if (newPostElement.current) {
             const text = newPostElement.current.value
-            props.dispatch(changeNewPostTextAC(text))
-        }
+            props.store.dispatch(changeNewPostTextAC(text))
+        }*/
     }
     return (
-        <div className={s.myPost}>
+        /*<div className={s.myPost}>
             <h2>My post</h2>
             <div>
                 <div>
@@ -48,7 +53,14 @@ export function MyPostsContainer(props: MyPostsPropsType) {
             <div className={s.posts}>
                 <Post posts={props.posts}/>
             </div>
-        </div>
+        </div>*/
+        <MyPosts
+            changeNewPostText={onPostChange}
+            addPost={addPost}
+            posts={state.profilePage.posts}
+            newPostText={state.profilePage.newPostText}
+            dispatch={props.dispatch}
+        />
     )
 }
 

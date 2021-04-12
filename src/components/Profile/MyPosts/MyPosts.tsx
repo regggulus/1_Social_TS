@@ -18,6 +18,7 @@ export function MyPosts(props: MyPostsPropsType) {
     const newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
+        // props.addPost
         if (newPostElement.current) {
             props.dispatch(addPostAC(props.newPostText))
             props.changeNewPostText('')
