@@ -29,7 +29,6 @@ export const App: React.FC<AppPropsType> = (props) => {
             <div className="App">
                 <Header/>
                 <Navbar sidebarPage={props.state.sidebarPage}
-                    // dispatch={props.dispatch}
                 />
                 <div className={'app-content'}>
                     <Route path={'/profile'} render={() =>
@@ -49,8 +48,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
-                    {/*<Route path={'/sidebar'} render={ () =>
-                    <Navbar sidebarPage={props.store.sidebarPage}/>}/>*/}
+
                 </div>
 
             </div>
