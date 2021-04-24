@@ -1,15 +1,13 @@
 import React from "react";
 import s from './MyPosts.module.css'
-import {ActionsTypes, PostType} from "../../../redux/state";
 import {Post} from "./Post/Post";
-import {addPostAC, changeNewPostTextAC} from "../../../redux/profile-reducer";
+import {PostType} from "../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
     posts: Array<PostType>
     addPost: (addNewPost: string) => void
     changeNewPostText: (newText: string) => void
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
 }
 
 
@@ -19,14 +17,14 @@ export function MyPosts(props: MyPostsPropsType) {
 
     let addPost = () => {
         if (newPostElement.current) {
-            props.dispatch(addPostAC(props.newPostText))
+            props.addPost(props.newPostText)
             props.changeNewPostText('')
         }
     }
     const onPostChange = () => {
         if (newPostElement.current) {
             const text = newPostElement.current.value
-            props.dispatch(changeNewPostTextAC(text))
+            props.changeNewPostText(text)
         }
     }
     return (

@@ -36,11 +36,11 @@ export function Navbar(props: NavbarPropsType) {
                 </p>
             </div>
 
-            <div className={s.itemSide}>
+          {/*  <div className={s.itemSide}>
                 {props.sidebarPage.sidebar.map
                 (s => <Sidebar name={s.name} id={s.id}/>)}
             </div>
-
+*/}
 
         </div>
     )

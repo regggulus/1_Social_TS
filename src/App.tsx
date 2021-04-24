@@ -14,37 +14,34 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 type AppPropsType = {
     state: RootStateType
-    addPost: (addNewPost: string) => void
-    changeNewPostText: (newText: string) => void
-    changeNewMessageText: (newText: string) => void
-    newSendMessage: (newSendMessage: string) => void
-    store: StoreType
-    dispatch: (action: ActionsTypes) => void
+    //addPost: (addNewPost: string) => void
+    //changeNewPostText: (newText: string) => void
+    //changeNewMessageText: (newText: string) => void
+    //newSendMessage: (newSendMessage: string) => void
+    //store: StoreType
+    //dispatch: (action: ActionsTypes) => void
 }
 
 export const App: React.FC<AppPropsType> = (props) => {
-    const state = (props.store.getState)
+    //const state = (props.store.getState)
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Navbar sidebarPage={props.state.sidebarPage}
+                <Navbar
+                    sidebarPage={props.state.sidebarPage}
                 />
                 <div className={'app-content'}>
                     <Route path={'/profile'} render={() =>
-                        <Profile store={props.store}
-                                 profilePage={props.state.profilePage}
-                                 dispatch={props.dispatch}
-                                 addPost={props.addPost}
-                                 changeNewPostText={props.changeNewPostText}
+                        <Profile
+                            // store={props.store}
+                            //      profilePage={props.state.profilePage}
+                            //      dispatch={props.dispatch}
+                            //      addPost={props.addPost}
+                            //      changeNewPostText={props.changeNewPostText}
                         />}/>
                     <Route path={'/dialogs'} render={() =>
-                        <DialogsContainer store={props.store}
-                                          dialogsPage={props.state.dialogsPage}
-                                          dispatch={props.dispatch}
-                                          changeNewMessageText={props.changeNewMessageText}
-                                          newSendMessage={props.newSendMessage}
-                        />}/>
+                        <DialogsContainer/>}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/settings'} component={Settings}/>
