@@ -33,15 +33,15 @@ export const newSendMessageAC = (newSendMessage: string) => ({
     type: 'SEND-MESSAGE', newSendMessage}) as const
 
 export const dialogsReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
-
+let stateCopy;
     switch (action.type) {
         case "CHANGE-NEW-MESSAGE-TEXT": {
-            const stateCopy = {...state}
+            stateCopy = {...state}
             stateCopy.newMessageText = action.newMessageText
             return stateCopy
         }
         case "SEND-MESSAGE": {
-            const stateCopy = {...state}
+            stateCopy = {...state}
             stateCopy.newMessageText = action.newSendMessage
             stateCopy.newMessageText = ''
             stateCopy.messages.push({id: 6, message: action.newSendMessage})
