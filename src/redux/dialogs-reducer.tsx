@@ -1,5 +1,4 @@
 import {ActionsTypes} from "./state";
-import {rerender} from "../index";
 
 export type DialogType = {
     id: number
@@ -10,7 +9,7 @@ export type MessageType = {
     message: string
 }
 
-const initialState: initialStateType = {
+const initialState = {
     dialogs: [
         {id: 1, name: "Mason"},
         {id: 2, name: "Edgar"},
@@ -26,12 +25,7 @@ const initialState: initialStateType = {
     ],
     newMessageText: ''
 }
-export type initialStateType = {
-    dialogs: Array<DialogType>,
-    messages: Array<MessageType>,
-    newMessageText: string
-}
-
+export type initialStateType = typeof initialState
 
 export const changeNewMessageAC = (newMessageText: string) =>
     ({type: 'CHANGE-NEW-MESSAGE-TEXT', newMessageText}) as const
@@ -41,16 +35,18 @@ export const newSendMessageAC = (newSendMessage: string) => ({
 export const dialogsReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
 
     switch (action.type) {
-        case "CHANGE-NEW-MESSAGE-TEXT":
-            state.newMessageText = action.newMessageText
-            rerender()
-            return state
-        case "SEND-MESSAGE":
-            state.newMessageText = action.newSendMessage
-            state.newMessageText = ''
-            state.messages.push({id: 6, message: action.newSendMessage})
-            rerender()
-            return state
+        case "CHANGE-NEW-MESSAGE-TEXT": {
+            const stateCopy = {...state}
+            stateCopy.newMessageText = action.newMessageText
+            return stateCopy
+        }
+        case "SEND-MESSAGE": {
+            const stateCopy = {...state}
+            stateCopy.newMessageText = action.newSendMessage
+            stateCopy.newMessageText = ''
+            stateCopy.messages.push({id: 6, message: action.newSendMessage})
+            return stateCopy
+        }
         default:
             return state
     }

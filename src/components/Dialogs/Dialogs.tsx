@@ -6,10 +6,6 @@ import {ActionsTypes, DialogsPageType} from "../../redux/state";
 import {DialogType, MessageType} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
-    // dialogsPage: DialogsPageType
-    // dispatch: (action: ActionsTypes) => void
-    // changeNewMessageText: (newText: string) => void
-    // newSendMessage: (newSendMessage: string) => void
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageText: string
@@ -18,7 +14,6 @@ type DialogsPropsType = {
 }
 
 export function Dialogs(props: DialogsPropsType) {
-    // const state = props.dialogsPage
     const dialogsElements = props.dialogs
         .map(d => <DialogsItem name={d.name} id={d.id}/>)
     const messagesElements = props.messages

@@ -5,10 +5,10 @@ import {SidebarPageType} from "../../redux/state";
 import {Sidebar} from "../Sidebar/Sidebar";
 
 type NavbarPropsType = {
-    sidebarPage: SidebarPageType
+    // sidebarPage: SidebarPageType
 }
 
-export function Navbar(props: NavbarPropsType) {
+export function Navbar() {
 
     return (
         <div className={s.nav}>
@@ -36,11 +36,11 @@ export function Navbar(props: NavbarPropsType) {
                 </p>
             </div>
 
-          {/*  <div className={s.itemSide}>
+            {/*<div className={s.itemSide}>
                 {props.sidebarPage.sidebar.map
                 (s => <Sidebar name={s.name} id={s.id}/>)}
-            </div>
-*/}
+            </div>*/}
+
 
         </div>
     )

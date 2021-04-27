@@ -9,6 +9,8 @@ let rootReducer = combineReducers({
     dialogsPage: dialogsReducer,
     sidebarPage: sidebarReducer
 })
+
+// window.store = store
 export type RootStateType = ReturnType<typeof rootReducer>
 export let store = createStore(rootReducer);
 

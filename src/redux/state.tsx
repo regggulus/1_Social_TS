@@ -1,6 +1,10 @@
 import {addPostAC, changeNewPostTextAC, profileReducer} from "./profile-reducer";
 import {changeNewMessageAC, dialogsReducer, newSendMessageAC} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
+import {stringify} from "querystring";
+import {Sidebar} from "../components/Sidebar/Sidebar";
+import React from "react";
+import {checkServerIdentity} from "tls";
 
 let _onChange = () => {
     console.log("hi")
@@ -22,7 +26,7 @@ type PostType = {
     message: string
     likesCount: number
 }
-export type SidebarType = {
+type SidebarType = {
     id: number
     name: string
 }
@@ -115,8 +119,6 @@ export const store: StoreType = {
         this._state.dialogsPage.newMessageText = newSendMessage
         this._onChange();
     },
-
-
     subscriber(observer) {
         this._onChange = observer
     },
@@ -127,23 +129,12 @@ export const store: StoreType = {
         return this._state
     },
 
+
     dispatch(action) {
 
         profileReducer(this._state.profilePage, action)
         dialogsReducer(this._state.dialogsPage, action)
         sidebarReducer(this._state.sidebarPage, action)
         this._onChange();
-
-        /*if (action.type === 'CHANGE-NEW-MESSAGE-TEXT') {
-            this._onChange();
-            this._state.dialogsPage.newMessageText = action.newMessageText
-        } else if (action.type === 'SEND-MESSAGE') {
-            let message =  this._state.dialogsPage.newMessageText
-            this._state.dialogsPage.newMessageText = ''
-            this._state.dialogsPage.messages.push({id: 6, message: message})
-            this._onChange();
-        }*/
-
-
     }
 }
