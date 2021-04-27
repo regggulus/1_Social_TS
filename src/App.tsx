@@ -9,6 +9,7 @@ import {Settings} from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {ActionsTypes, RootStateType, StoreType} from "./redux/state";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {Users} from "./components/Users/Users";
 
 
 /*type AppPropsType = {
@@ -31,6 +32,7 @@ export const App = () => {
                         <DialogsContainer/>}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
+                    <Route path={'/users'} component={Users}/>
                     <Route path={'/settings'} component={Settings}/>
 
                 </div>
