@@ -1,10 +1,7 @@
-import {addPostAC, changeNewPostTextAC, profileReducer} from "./profile-reducer";
-import {changeNewMessageAC, dialogsReducer, newSendMessageAC} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
-import {stringify} from "querystring";
-import {Sidebar} from "../components/Sidebar/Sidebar";
+import {addPostAC, changeNewPostTextAC} from "./profile-reducer";
+import {changeNewMessageAC, newSendMessageAC} from "./dialogs-reducer";
 import React from "react";
-import {checkServerIdentity} from "tls";
+import {followAC, setUsersAC, unFollowAC} from "./users-reducer";
 
 let _onChange = () => {
     console.log("hi")
@@ -13,128 +10,8 @@ export const subscriber = (observer: () => void) => {
     _onChange = observer
 }
 
-type DialogType = {
-    id: number
-    name: string
-}
-type MessageType = {
-    id: number
-    message: string
-}
-type PostType = {
-    id: number
-    message: string
-    likesCount: number
-}
-type SidebarType = {
-    id: number
-    name: string
-}
-export type ProfilePageType = {
-    posts: Array<PostType>
-    newPostText: string
-}
-export type DialogsPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    newMessageText: string
-}
-export type SidebarPageType = {
-    sidebar: Array<SidebarType>
-}
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    sidebarPage: SidebarPageType
-}
 
-export type StoreType = {
-    _state: RootStateType
-    _changeNewPostText: (newText: string) => void
-    _changeNewMessageText: (newText: string) => void
-    _newSendMessage: (newSendMessage: string) => void
-    _addPost: (addNewPost: string) => void
-    _onChange: () => void
-    subscriber: (observer: () => void) => void
-    getState: () => RootStateType
-    dispatch: (action: ActionsTypes) => void
-}
-
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC> | ReturnType<typeof changeNewMessageAC> | ReturnType<typeof newSendMessageAC>
-
-
-
-export const store: StoreType = {
-    _state: {
-        profilePage: {
-            posts: [
-                {id: 1, message: "Hi, how are you", likesCount: 20},
-                {id: 2, message: "It's my first post", likesCount: 25}
-            ],
-            newPostText: ''
-        },
-        dialogsPage: {
-            dialogs: [
-                {id: 1, name: "Mason"},
-                {id: 2, name: "Edgar"},
-                {id: 3, name: "Felix"},
-                {id: 4, name: "Jack"},
-                {id: 5, name: "Calvin"}
-            ],
-            messages: [
-                {id: 1, message: "A lot of my staff..."},
-                {id: 2, message: "Oke, we`ll see"},
-                {id: 3, message: "Dont`s know"},
-                {id: 4, message: "What`s up?"}
-            ],
-            newMessageText: ''
-        },
-        sidebarPage: {
-            sidebar: [
-                {id: 1, name: "Manson"},
-                {id: 2, name: "Edgar"},
-                {id: 3, name: "Felix"}
-            ]
-        }
-    },
-    _addPost(addNewPost: string) {
-        const newPost: PostType = {
-            id: 3,
-            message: addNewPost,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ""
-        this._onChange()
-    },
-    _changeNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._onChange()
-    },
-    _changeNewMessageText(newMessageText: string) {
-        this._state.dialogsPage.newMessageText = newMessageText
-        this._onChange();
-    },
-    _newSendMessage(newSendMessage: string) {
-        this._state.dialogsPage.newMessageText = newSendMessage
-        this._onChange();
-    },
-    subscriber(observer) {
-        this._onChange = observer
-    },
-    _onChange() {
-        console.log('state change')
-    },
-    getState() {
-        return this._state
-    },
-
-
-    dispatch(action) {
-
-        profileReducer(this._state.profilePage, action)
-        dialogsReducer(this._state.dialogsPage, action)
-        sidebarReducer(this._state.sidebarPage, action)
-        this._onChange();
-    }
-}
+export type ActionsTypes =
+    ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
+    | ReturnType<typeof changeNewMessageAC> | ReturnType<typeof newSendMessageAC>
+    | ReturnType<typeof followAC> | ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>

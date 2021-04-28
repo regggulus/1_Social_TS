@@ -1,6 +1,6 @@
 import {ActionsTypes} from "./state";
 
-type UsersType = {
+export type UsersType = {
     id: number
     followed: boolean
     fullName: string
@@ -11,7 +11,7 @@ type UsersType = {
 
     }
 }
-const initialState = {
+export const initialState = {
     users: [
         {id: 1, followed: false, fullName: "Mason", status: 'Hi', location: {city: 'New York', country: 'USA' }},
         {id: 2, followed: true, fullName: "Edgar", status: 'Yo', location: {city: 'San-Diego', country: 'USA' }},
@@ -25,11 +25,35 @@ export const followAC = (userId: number) =>
     ({type: 'FOLLOW', userId}) as const
 export const unFollowAC = (userId: number) => ({
     type: 'UNFOLLOW', userId}) as const
+export const setUsersAC = (users: Array<UsersType>) => ({
+    type: 'SET-USERS', users}) as const
 
-export const dialogsReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
+export const usersReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
     switch (action.type) {
         case 'FOLLOW' : {
-
+            return {
+                ...state,
+                users: state.users.map(u =>  {
+                    if(u.id === action.userId) {
+                        return {...u, followed: true}
+                    }
+                    return u
+                })
+            }
+        }
+        case 'UNFOLLOW' : {
+            return {
+                ...state,
+                users: state.users.map(u =>  {
+                    if(u.id === action.userId) {
+                        return {...u, unFollowed: false}
+                    }
+                    return u
+                })
+            }
+        }
+        case 'SET-USERS': {
+            return {...state, users: [...state.users, ...action.users]}
         }
         default:
             return state

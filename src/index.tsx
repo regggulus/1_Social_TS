@@ -6,7 +6,6 @@ import {App} from "./App";
 import {Provider} from "react-redux";
 import {store} from "./redux/redux-store";
 
-// export function rerender() {
     ReactDOM.render(
         <React.StrictMode>
             <Provider store={store}>
@@ -15,8 +14,4 @@ import {store} from "./redux/redux-store";
         </React.StrictMode>,
         document.getElementById('root')
     );
-// }
-
-// rerender()
-// store.subscriber(rerender)
 reportWebVitals();
