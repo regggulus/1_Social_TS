@@ -12,22 +12,20 @@ export type UsersType = {
 
     }
 }
-export const initialState = {
-    users: [
-        {id: 1, photoUrl: 'https://tlgrm.ru/_/stickers/9e7/6f5/9e76f5da-9232-3232-9184-81bc5c262a05/7.jpg', followed: false, fullName: "Mason", status: 'Hi', location: {city: 'New York', country: 'USA' }},
-        {id: 2, photoUrl: 'https://tlgrm.ru/_/stickers/9e7/6f5/9e76f5da-9232-3232-9184-81bc5c262a05/7.jpg', followed: true, fullName: "Edgar", status: 'Yo', location: {city: 'San-Diego', country: 'USA' }},
-        {id: 3, photoUrl: 'https://tlgrm.ru/_/stickers/9e7/6f5/9e76f5da-9232-3232-9184-81bc5c262a05/7.jpg', followed: false, fullName: "Felix", status: 'Aloha', location: {city: 'Hawaii', country: 'USA' }},
-
-    ]
+export type UsersPageType = {
+    users: Array<UsersType>
 }
+const initialState: UsersPageType = {
+    users: []
+}
+const FOLLOW = "FOLLOW";
+const UNFOLLOW = "UNFOLLOW";
+const SET_USERS = "SET-USERS";
 export type initialStateType = typeof initialState
 
-export const followAC = (userId: number) =>
-    ({type: 'FOLLOW', userId}) as const
-export const unFollowAC = (userId: number) => ({
-    type: 'UNFOLLOW', userId}) as const
-export const setUsersAC = (users: Array<UsersType>) => ({
-    type: 'SET-USERS', users}) as const
+export const followAC = (userId: number) => ({type: 'FOLLOW', userId}) as const
+export const unFollowAC = (userId: number) => ({type: 'UNFOLLOW', userId}) as const
+export const setUsersAC = (users: Array<UsersType>) => ({type: 'SET-USERS', users}) as const
 
 export const usersReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
     switch (action.type) {
@@ -47,7 +45,7 @@ export const usersReducer = (state: initialStateType = initialState, action: Act
                 ...state,
                 users: state.users.map(u =>  {
                     if(u.id === action.userId) {
-                        return {...u, unFollowed: false}
+                        return {...u, unfollowed: false}
                     }
                     return u
                 })
