@@ -11,10 +11,6 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 
 
-/*type AppPropsType = {
-    state: RootStateType
-}*/
-// : React.FC<AppPropsType>
 export const App = () => {
     return (
         <BrowserRouter>
@@ -24,14 +20,11 @@ export const App = () => {
                     // sidebarPage={props.state.sidebarPage}
                 />
                 <div className={'app-content'}>
-                    <Route path={'/profile'} render={() =>
-                        <Profile
-                        />}/>
-                    <Route path={'/dialogs'} render={() =>
-                        <DialogsContainer/>}/>
+                    <Route path={'/profile'} render={() => <Profile/>}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
-                    <Route path={'/users'} component={UsersContainer}/>
+                    <Route path={'/users'} render={()=> <UsersContainer />}/>
                     <Route path={'/settings'} component={Settings}/>
 
                 </div>
