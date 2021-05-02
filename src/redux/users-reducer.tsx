@@ -7,7 +7,7 @@ export type UsersType = {
         large: string
     }
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: {
         city: string
