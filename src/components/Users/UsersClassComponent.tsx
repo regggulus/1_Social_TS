@@ -10,21 +10,25 @@ type UsersPropsType = {
     unfollow: (userId: number) => void
     setUsers: (users: Array<UsersType>) => void
 }
+
 export class UsersClassComponent extends React.Component<UsersPropsType> {
-    getUsers = () => {
-        if(!this.props.users.length) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
+    componentDidMount() {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then((response) => {
                 this.props.setUsers(response.data.items)
             })
-        }}
+    }
+
+    // getUsers = () => {
+
     render() {
         return (
             <div>
-                <button onClick={this.getUsers}>Get Users</button>
                 {this.props.users.map(u => <div key={u.id}>
                     <div>
                         <div>
-                            <img src={u.photos && u.photos.small != null ? u.photos.small : userPhoto} alt="The Big Lebowski" className={s.usersPhoto}/>
+                            <img src={u.photos && u.photos.small != null ? u.photos.small : userPhoto}
+                                 alt="The Big Lebowski" className={s.usersPhoto}/>
                         </div>
                         <div>
                             {u.followed
