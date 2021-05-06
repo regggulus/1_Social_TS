@@ -5,6 +5,7 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Music} from "./components/Music/Music";
 import {News} from './components/News/News';
+import {Friends} from "./components/Navbar/friends/Friends";
 import {Settings} from './components/Settings/Settings';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
@@ -16,9 +17,7 @@ export const App = () => {
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Navbar
-                    // sidebarPage={props.state.sidebarPage}
-                />
+                <Navbar/>
                 <div className={'app-content'}>
                     <Route path={'/profile'} render={() => <Profile/>}/>
                     <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
@@ -26,6 +25,7 @@ export const App = () => {
                     <Route path={'/music'} component={Music}/>
                     <Route path={'/users'} render={()=> <UsersContainer />}/>
                     <Route path={'/settings'} component={Settings}/>
+                    <Route path={'/friends'} component={Friends}/>
 
                 </div>
 
