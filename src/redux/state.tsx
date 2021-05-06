@@ -1,7 +1,7 @@
 import {addPostAC, changeNewPostTextAC} from "./profile-reducer";
 import {changeNewMessageAC, newSendMessageAC} from "./dialogs-reducer";
 import React from "react";
-import {followAC, setUsersAC, unFollowAC} from "./users-reducer";
+import {followAC, setCurrentPageAC, setUsersAC, setUsersTotalCountAC, unFollowAC} from "./users-reducer";
 
 let _onChange = () => {
     console.log("hi")
@@ -12,6 +12,12 @@ export const subscriber = (observer: () => void) => {
 
 
 export type ActionsTypes =
-    ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
-    | ReturnType<typeof changeNewMessageAC> | ReturnType<typeof newSendMessageAC>
-    | ReturnType<typeof followAC> | ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof addPostAC>
+    | ReturnType<typeof changeNewPostTextAC>
+    | ReturnType<typeof changeNewMessageAC>
+    | ReturnType<typeof newSendMessageAC>
+    | ReturnType<typeof followAC>
+    | ReturnType<typeof unFollowAC>
+    | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>
+    | ReturnType<typeof setUsersTotalCountAC>
