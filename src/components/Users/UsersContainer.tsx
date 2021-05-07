@@ -45,7 +45,7 @@ export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
         },
         setTotalUserCount: (totalUsersCount: number) => {
             dispatch(setUsersTotalCountAC(totalUsersCount))
-    }
+        }
     }
 }
 

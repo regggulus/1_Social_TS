@@ -11,7 +11,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 
-
 export const App = () => {
     return (
         <BrowserRouter>
@@ -23,7 +22,7 @@ export const App = () => {
                     <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
                     <Route path={'/news'} component={News}/>
                     <Route path={'/music'} component={Music}/>
-                    <Route path={'/users'} render={()=> <UsersContainer setTotalUsersCount={() => ('')}/>}/>
+                    <Route path={'/users'} component={UsersContainer}/>
                     <Route path={'/settings'} component={Settings}/>
                     <Route path={'/friends'} component={Friends}/>
 

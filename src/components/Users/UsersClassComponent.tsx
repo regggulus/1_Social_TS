@@ -13,7 +13,7 @@ type UsersPropsType = {
     unfollow: (userId: number) => void
     setUsers: (users: Array<UsersType>) => void
     setCurrentPage: (pageNumber: number) => void
-    setTotalUsersCount: (totalCount: number) => void
+    setTotalUserCount: (totalUserCount: number) => void
 }
 
 export class UsersClassComponent extends React.Component<UsersPropsType> {
@@ -22,7 +22,7 @@ export class UsersClassComponent extends React.Component<UsersPropsType> {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setTotalUserCount(response.data.totalCount)
             })
     }
 
@@ -40,6 +40,8 @@ export class UsersClassComponent extends React.Component<UsersPropsType> {
         for(let i=1; i <= pagesCount; i++) {
             pages.push(i)
         }
+
+        console.log(this.props.totalUsersCount)
         return (
             <div>
                 <div>
