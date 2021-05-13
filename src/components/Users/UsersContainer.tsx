@@ -9,7 +9,6 @@ import {
     unFollow,
     UsersType
 } from "../../redux/users-reducer";
-import {Dispatch} from "redux";
 import {RootStateType} from "../../redux/redux-store";
 import axios from "axios";
 import {Users} from "./Users";
@@ -99,28 +98,6 @@ export const mapStateToProps = (state: RootStateType): MapStateToProps => {
 
     }as const
 }
-// export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (usersId) => {
-//             dispatch(unFollowAC(usersId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (pageNumber: number) => {
-//             dispatch(setCurrentPageAC(pageNumber))
-//         },
-//         setTotalUserCount: (totalUsersCount: number) => {
-//             dispatch(setUsersTotalCountAC(totalUsersCount))
-//         },
-//         toggleIsFetching: (isFetching: boolean) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 
 export const UsersContainer = connect<MapStateToProps, MapDispatchToProps, {}, RootStateType>(mapStateToProps, {
     follow: follow,

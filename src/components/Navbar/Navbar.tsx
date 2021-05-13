@@ -1,12 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import s from './Navbar.module.css'
-import {Sidebar} from "../Sidebar/Sidebar";
 import {Friends} from "./friends/Friends";
-
-type NavbarPropsType = {
-    // sidebarPage: SidebarPageType
-}
 
 export function Navbar() {
 
