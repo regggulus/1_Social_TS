@@ -2,12 +2,12 @@ import {addPostAC, changeNewPostTextAC} from "./profile-reducer";
 import {changeNewMessageAC, newSendMessageAC} from "./dialogs-reducer";
 import React from "react";
 import {
-    followAC,
-    setCurrentPageAC,
-    setUsersAC,
-    setUsersTotalCountAC,
-    toggleIsFetchingAC,
-    unFollowAC
+    follow,
+    setCurrentPage,
+    setUsers,
+    setUsersTotalCount,
+    toggleIsFetching,
+    unFollow
 } from "./users-reducer";
 
 let _onChange = () => {
@@ -23,9 +23,9 @@ export type ActionsTypes =
     | ReturnType<typeof changeNewPostTextAC>
     | ReturnType<typeof changeNewMessageAC>
     | ReturnType<typeof newSendMessageAC>
-    | ReturnType<typeof followAC>
-    | ReturnType<typeof unFollowAC>
-    | ReturnType<typeof setUsersAC>
-    | ReturnType<typeof setCurrentPageAC>
-    | ReturnType<typeof setUsersTotalCountAC>
-        | ReturnType<typeof toggleIsFetchingAC>
+    | ReturnType<typeof follow>
+    | ReturnType<typeof unFollow>
+    | ReturnType<typeof setUsers>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setUsersTotalCount>
+        | ReturnType<typeof toggleIsFetching>

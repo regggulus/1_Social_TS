@@ -33,12 +33,12 @@ const initialState: UsersPageType = {
 }
 export type initialStateType = typeof initialState
 
-export const followAC = (userId: number) => ({type: 'FOLLOW', userId}) as const
-export const unFollowAC = (userId: number) => ({type: 'UNFOLLOW', userId}) as const
-export const setUsersAC = (users: Array<UsersType>) => ({type: 'SET-USERS', users}) as const
-export const setCurrentPageAC = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage}) as const
-export const setUsersTotalCountAC = (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS', totalUsersCount}) as const
-export const toggleIsFetchingAC = (isFetching: boolean) => ({type: 'IS_FETCHING', isFetching}) as const
+export const follow = (userId: number) => ({type: 'FOLLOW', userId}) as const
+export const unFollow = (userId: number) => ({type: 'UNFOLLOW', userId}) as const
+export const setUsers = (users: Array<UsersType>) => ({type: 'SET-USERS', users}) as const
+export const setCurrentPage = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage}) as const
+export const setUsersTotalCount = (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS', totalUsersCount}) as const
+export const toggleIsFetching = (isFetching: boolean) => ({type: 'IS_FETCHING', isFetching}) as const
 
 export const usersReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
     switch (action.type) {
